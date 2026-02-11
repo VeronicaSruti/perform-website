@@ -1,0 +1,343 @@
+/* BASE */
+:root {
+  /* Backgrounds */
+  --nav-Bg: #19171e;
+  --main-Bg: #f8f9fb;
+  --light-bg: #fefeff;
+  --dark-Bg: #0e0c12;
+  --dark-Bg2: #18171b;
+  --blue-Bg: #2563eb;
+  /* Text */
+  --text-dark: #222222;
+  --text-blue: #4a9af4;
+  --text-muted: #6b7280;
+  --text-light: #fefeff;
+}
+
+body {
+  font-family: "Barlow", sans-serif;
+  /* color: #0f172a; */
+  background-color: var(--main-Bg);
+}
+.dark-bg {
+  background-color: var(--dark-Bg);
+}
+.dark-text {
+  color: var(--text-dark);
+}
+/* NAVBAR */
+.nav-container {
+  background-color: var(--nav-Bg);
+  max-width: 1224px;
+}
+
+.navbar {
+  padding: 1.25rem 0;
+}
+.nav-link {
+  font-weight: 500;
+  font-size: 1rem;
+  color: var(--text-light);
+}
+
+.nav-link:hover {
+  color: var(--text-blue);
+}
+.nav-link.active {
+  color: var(--text-blue);
+  font-weight: 600;
+}
+/* HERO */
+.hero-section {
+  padding: 3rem 1rem 5rem;
+}
+
+.hero-container {
+  max-width: 820px;
+}
+.badge-pill {
+  padding: 0.45rem 1.2rem;
+  border-radius: 50px;
+}
+.hero-title {
+  font-size: clamp(2.6rem, 4.5vw, 4rem);
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+  margin-bottom: 1.5rem;
+  color: var(--text-light);
+}
+
+.hero-subtitle {
+  font-size: 1.3rem;
+  color: var(--text-light);
+  max-width: 620px;
+  margin: 0 auto;
+  color: var(--text-light);
+}
+
+/* VALUES */
+.value-section {
+  background-color: var(--dark-Bg2);
+  padding: 5rem 1rem;
+}
+
+.feature-card {
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 16px;
+  transition:
+    border-color 0.25s ease,
+    transform 0.25s ease,
+    background-color 0.25s ease;
+}
+
+/* Card text styling */
+.feature-card .card-title {
+  color: var(--text-blue);
+  font-weight: 600;
+}
+
+.feature-card .card-text {
+  color: #9ca3af;
+  font-size: 0.95rem;
+}
+
+/* Hover effect */
+.feature-card:hover {
+  transform: translateY(-6px);
+  border-color: rgba(255, 255, 255, 0.35);
+  background-color: rgba(255, 255, 255, 0.03);
+}
+/* CTA */
+.cta-section {
+  padding: 6rem 1rem;
+  background-color: var(--light-bg);
+}
+
+.cta-container {
+  max-width: 720px;
+}
+
+.cta-title {
+  font-size: 1.75rem;
+  font-weight: 600;
+  margin-bottom: 2rem;
+}
+
+.cta-btn {
+  background: var(--blue-Bg);
+  color: var(--text-light);
+  padding: 0.55rem 2rem;
+  font-size: 1.2rem;
+  border-radius: 8px;
+}
+
+.cta-btn:hover {
+  background: #1e4fd6;
+  color: var(--text-light);
+}
+
+/* FOOTER */
+.footer-section {
+  background-color: var(--dark-Bg);
+  padding: 1.5rem 1rem 0.5rem;
+}
+
+.footer-text {
+  font-size: 0.85rem;
+  color: #94a3b8;
+}
+.swiper-slide {
+  width: auto;
+}
+
+.project-card {
+  width: 260px; /* try 240–300 */
+  background: #1e1e2f;
+  border-radius: 14px;
+  overflow: hidden;
+}
+.projects-swiper {
+  padding-left: 3rem;
+  padding-right: 3rem;
+}
+
+.projects-swiper:hover .swiper-wrapper {
+  animation-play-state: paused;
+}
+.project-card img {
+  width: 100%;
+  display: block;
+}
+
+.project-card p {
+  padding: 0.75rem;
+  font-size: 0.9rem;
+  color: #475569;
+}
+.projects-section {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+.projects-swiper .swiper-wrapper {
+  transition-timing-function: linear !important;
+  animation: scroll-horizontal 20s linear infinite;
+}
+
+@keyframes scroll-horizontal {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+.projects-swiper::before,
+.projects-swiper::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  width: 60px;
+  height: 100%;
+  z-index: 10;
+  pointer-events: none;
+}
+
+.projects-swiper::before {
+  left: 0;
+  background: linear-gradient(to right, #101218, transparent);
+}
+
+.projects-swiper::after {
+  right: 0;
+  background: linear-gradient(to left, #0f1115, transparent);
+}
+
+/* //service  */
+
+.service-image img {
+  object-fit: cover;
+  width: 100%;
+}
+
+.accordion-button {
+  background: var(--main-Bg);
+  color: var(--text-dark);
+  font-weight: 600;
+  padding: 1.25rem 0;
+}
+
+.accordion-button:not(.collapsed) {
+  color: #111;
+  background: var(--main-Bg);
+  box-shadow: none;
+}
+
+.accordion-item {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+.accordion-body {
+  background: var(--main-Bg);
+  padding-left: 0;
+  padding-right: 0;
+  line-height: 1.7;
+}
+
+.accordion-button::after {
+  transform: scale(0.9);
+}
+#serviceImage {
+  transition: opacity 0.3s ease;
+}
+
+.feature-card-light {
+  background: #f8f9fa;
+  border-radius: 18px;
+  transition: all 0.3s ease;
+}
+
+.feature-card-light:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 10px 12px 1px rgba(0, 0, 0, 0.08);
+}
+
+.icon-circle {
+  width: 60px;
+  height: 60px;
+  margin: 0 auto;
+  background: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 28px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+/* button */
+
+.fizzy-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  width: 230px;
+  height: 50px;
+  /* border: 2px solid #ffffff; */
+  border-radius: 50px;
+  background-color: var(--blue-Bg);
+  color: #ffffff;
+  font-size: 14px;
+  letter-spacing: 1px;
+  text-decoration: none;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+.fizzy-btn::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 50px;
+  border: 0.5px solid var(--blue-Bg);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.2s ease;
+}
+.fizzy-btn .text {
+  font-weight: 500;
+  transition: transform 0.3s ease;
+  z-index: 2;
+}
+
+.fizzy-btn .arrow {
+  position: absolute;
+  right: 20px;
+  opacity: 0;
+  transform: translateX(10px);
+  transition: all 0.3s ease;
+  color: var(--blue-Bg);
+  z-index: 2;
+}
+
+/* Hover */
+.fizzy-btn:hover {
+  background: #ffffff;
+  color: var(--blue-Bg);
+  box-shadow: 0 10px 15px rgba(0, 0, 0, 0.062);
+}
+
+.fizzy-btn:hover::after {
+  transform: scaleX(1);
+}
+
+.fizzy-btn:hover .text {
+  transform: translateX(-10px);
+}
+
+.fizzy-btn:hover .arrow {
+  opacity: 1;
+  transform: translateX(0);
+}
