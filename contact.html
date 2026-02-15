@@ -28,7 +28,7 @@
   <body>
     <!-- NAVBAR -->
     <div class="dark-bg">
-      <nav class="navbar navbar-expand-lg px-3 px-lg-5 py-5 bg-purple">
+      <nav class="navbar navbar-expand-lg navbar-dark px-3 px-lg-5 py-5">
         <div class="container nav-container rounded-5 px-4 px-lg-5 py-3">
           <a class="navbar-brand fw-bold text-white" href="#"
             ><img
@@ -99,25 +99,49 @@
               Tell us about your business and we’ll get back to you shortly.
             </p>
 
-            <form id="contactForm" novalidate>
+            <form
+              id="contactForm"
+              action="https://docs.google.com/forms/d/e/1FAIpQLSfp9xFFjFGv0IomIewB23jNZqRcnjH4nsc2xyvmD0lJKeRzxw/formResponse"
+              method="POST"
+              target="hidden_iframe"
+              novalidate
+            >
               <!-- Name -->
               <div class="mb-3">
                 <label class="form-label">Full Name</label>
-                <input type="text" class="form-control" id="name" required />
+                <input
+                  type="text"
+                  class="form-control"
+                  id="name"
+                  name="entry.1456737462"
+                  required
+                />
                 <div class="invalid-feedback">Please enter your name.</div>
               </div>
 
               <!-- Email -->
               <div class="mb-3">
                 <label class="form-label">Email Address</label>
-                <input type="email" class="form-control" id="email" required />
+                <input
+                  type="email"
+                  class="form-control"
+                  id="email"
+                  name="entry.1151881869"
+                  required
+                />
                 <div class="invalid-feedback">Please enter a valid email.</div>
               </div>
 
               <!-- Phone -->
               <div class="mb-3">
                 <label class="form-label">Phone Number</label>
-                <input type="tel" class="form-control" id="phone" required />
+                <input
+                  type="tel"
+                  class="form-control"
+                  id="phone"
+                  name="entry.1378656567"
+                  required
+                />
                 <div class="invalid-feedback">
                   Please enter your phone number.
                 </div>
@@ -130,6 +154,7 @@
                   class="form-control"
                   rows="4"
                   id="message"
+                  name="entry.1657092286"
                   required
                 ></textarea>
                 <div class="invalid-feedback">Please enter your message.</div>
@@ -139,6 +164,7 @@
                 Send Message
               </button>
             </form>
+            <iframe name="hidden_iframe" style="display: none"></iframe>
           </div>
 
           <!-- RIGHT SIDE IMAGE -->
@@ -165,7 +191,7 @@
       </div>
     </div>
 
-    <section class="py-5 cta-section">
+    <!-- <section class="py-5 cta-section">
       <div class="container text-center cta-container">
         <h3 class="cta-title dark-text">Ready to Build Your Website?</h3>
         <p class="text-muted mt-3">
@@ -176,7 +202,7 @@
           <span class="arrow">➜</span>
         </a>
       </div>
-    </section>
+    </section> -->
 
     <footer class="footer-section">
       <div class="container text-center">
@@ -199,18 +225,15 @@
     <script>
       const form = document.getElementById("contactForm");
 
-      form.addEventListener("submit", function (event) {
-        event.preventDefault();
-        event.stopPropagation();
-
+      form.addEventListener("submit", function () {
         let isValid = true;
 
-        const name = document.getElementById("name");
-        const email = document.getElementById("email");
-        const phone = document.getElementById("phone");
-        const message = document.getElementById("message");
+        const name = form.querySelector('[name="entry.1456737462"]');
+        const email = form.querySelector('[name="entry.1151881869"]');
+        const phone = form.querySelector('[name="entry.1378656567"]');
+        const message = form.querySelector('[name="entry.1657092286"]');
 
-        // Simple custom validations
+        // Name validation
         if (name.value.trim() === "") {
           name.classList.add("is-invalid");
           isValid = false;
@@ -218,7 +241,8 @@
           name.classList.remove("is-invalid");
         }
 
-        const emailPattern = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
+        // Email validation
+        const emailPattern = /^[^ ]+@[^ ]+\.[a-z]{2,}$/;
         if (!emailPattern.test(email.value.trim())) {
           email.classList.add("is-invalid");
           isValid = false;
@@ -226,6 +250,7 @@
           email.classList.remove("is-invalid");
         }
 
+        // Phone validation
         if (phone.value.trim().length < 7) {
           phone.classList.add("is-invalid");
           isValid = false;
@@ -233,6 +258,7 @@
           phone.classList.remove("is-invalid");
         }
 
+        // Message validation
         if (message.value.trim().length < 10) {
           message.classList.add("is-invalid");
           isValid = false;
@@ -240,10 +266,18 @@
           message.classList.remove("is-invalid");
         }
 
-        if (isValid) {
-          alert("Form submitted successfully!");
-          form.reset();
+        // If invalid → STOP submission
+        if (!isValid) {
+          event.preventDefault();
+          event.stopPropagation();
+          return;
         }
+
+        // Success message (after submit)
+        setTimeout(() => {
+          alert("✅ Thank you! Your message has been sent.");
+          form.reset();
+        }, 500);
       });
     </script>
   </body>
