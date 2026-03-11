@@ -164,6 +164,7 @@ body {
   background: #1e1e2f;
   border-radius: 14px;
   overflow: hidden;
+  height: 500px;
 }
 .projects-swiper {
   padding-left: 3rem;
@@ -214,12 +215,12 @@ body {
 
 .projects-swiper::before {
   left: 0;
-  background: linear-gradient(to right, #101218, transparent);
+  background: linear-gradient(to right, #1012187f, transparent);
 }
 
 .projects-swiper::after {
   right: 0;
-  background: linear-gradient(to left, #0f1115, transparent);
+  background: linear-gradient(to left, #0f11152b, transparent);
 }
 
 /* //service  */
